@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
     private var mHandler = Handler()
 
+    var index = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +52,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        var index = 0
-
         go_button.setOnClickListener {
             if (index == mylist.size-1){
                 index=0
@@ -64,8 +64,12 @@ class MainActivity : AppCompatActivity() {
 
         back_button.setOnClickListener {
             if (index == 0){
+                Log.d("loglog", "URI : " + mylist[index])
+                Log.d("loglog", "URI : " + index)
                 index=mylist.size-1
                 imageView.setImageURI(mylist[index])
+                Log.d("loglog", "URI : " + mylist[index])
+                Log.d("loglog", "URI : " + index)
             }else if(index !=0){
                 index -= 1
                 imageView.setImageURI(mylist[index])
@@ -149,7 +153,7 @@ class MainActivity : AppCompatActivity() {
 //                Log.d("loglog", "URI : " + imageUri.toString())
                 Log.d("loglog", "URI : " + mylist.size)
 
-                imageView.setImageURI(imageUri)
+                imageView.setImageURI(mylist[index])
 
             } while (cursor.moveToNext())
         }
